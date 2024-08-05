@@ -21,7 +21,7 @@ app.post('/api/create-post', async (req, res) => {
     if (title && content) {
         try {
             await generateOgImage( {title, content, imageUrl: image }, postId ); 
-            posts[postId].ogImage = `${process.env.BACKEND_URL}/${postId}.png`;
+            posts[postId].ogImage = `${BACKEND_URL}/${postId}.png`;
           } catch (error) {
             console.error('Error generating OG image:', error);
             res.status(500).json({ message: 'Failed to generate OG image' });
