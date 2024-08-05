@@ -9,7 +9,7 @@ function CreatePost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:3000/api/create-post', {
+    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/api/create-post`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, content, image }),

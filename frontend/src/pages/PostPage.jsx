@@ -12,7 +12,7 @@ const PostPage = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/post/${postId}`);
+                const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/api/post/${postId}`);
                 setPost(response.data);
             } catch (error) {
                 setError('Error fetching post details');
