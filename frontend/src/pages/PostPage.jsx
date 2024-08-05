@@ -10,11 +10,12 @@ const PostPage = () => {
     const [error, setError] = useState(null);
 
     const FRONTEND_URL = import.meta.env.FRONTEND_URL || "http://localhost:5173"
+    const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL || "http://localhost:3001"
 
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/api/post/${postId}`);
+                const response = await axios.get(`${BACKEND_URL}/api/post/${postId}`);
                 setPost(response.data);
             } catch (error) {
                 setError('Error fetching post details');
