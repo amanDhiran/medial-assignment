@@ -8,7 +8,7 @@ const PostPage = () => {
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const FRONTEND_URL = import.meta.env.FRONTEND_URL
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -35,7 +35,7 @@ const PostPage = () => {
                 <meta property="og:title" content={post.title} />
                 <meta property="og:description" content={post.content} />
                 <meta property="og:image" content={`${post.ogImage}`} />
-                <meta property="og:url" content={`http://localhost:3000/post/${postId}`} />
+                <meta property="og:url" content={`${FRONTEND_URL}/post/${postId}`} />
                 <meta property="og:type" content="website" />
             </Helmet>
             <div className='border p-5 rounded-lg'>
