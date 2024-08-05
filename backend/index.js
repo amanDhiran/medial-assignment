@@ -19,7 +19,7 @@ app.post('/api/create-post', async (req, res) => {
     if (title && content) {
         try {
             await generateOgImage( {title, content, imageUrl: image }, postId ); 
-            posts[postId].ogImage = `http://localhost:3000/${postId}.png`;
+            posts[postId].ogImage = `${process.env.BACKEND_URL}/${postId}.png`;
           } catch (error) {
             console.error('Error generating OG image:', error);
             res.status(500).json({ message: 'Failed to generate OG image' });
@@ -27,8 +27,8 @@ app.post('/api/create-post', async (req, res) => {
     }
 
     res.json({ 
-        postUrl: `http://localhost:5173/post/${postId}`,
-        ogImage: `http://localhost:3000/${postId}.png`
+        postUrl: `${process.env.FRONTEND_URL}/post/${postId}`,
+        ogImage: `${process.env.BACKEND_URL}/${postId}.png`
      });
 });
 
@@ -44,6 +44,3 @@ app.get('/api/post/:postId', (req, res) => {
 
 app.listen(3001, () => console.log('Server running on port 3001'));
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
-});
