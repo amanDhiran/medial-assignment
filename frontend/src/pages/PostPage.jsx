@@ -8,7 +8,9 @@ const PostPage = () => {
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const FRONTEND_URL = import.meta.env.FRONTEND_URL
+
+    const FRONTEND_URL = import.meta.env.FRONTEND_URL || "http://localhost:5173"
+
     useEffect(() => {
         const fetchPost = async () => {
             try {

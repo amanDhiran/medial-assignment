@@ -7,9 +7,11 @@ function CreatePost() {
   const [postUrl, setPostUrl] = useState('');
   const [generatedImage, setGeneratedImage] = useState(null)
 
+  const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL || "http://localhost:3001"
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/api/create-post`, {
+    const response = await fetch(`${BACKEND_URL}/api/create-post`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, content, image }),
@@ -21,7 +23,7 @@ function CreatePost() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+    <div className="max-w-4xl mt-8 mx-auto p-6 bg-white shadow-md border rounded-lg">
       <h1 className="text-3xl font-bold text-center mb-6">Create Post</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

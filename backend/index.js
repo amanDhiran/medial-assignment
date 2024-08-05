@@ -10,6 +10,8 @@ app.use(express.static('public'));
 
 const posts = {}
 
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3001"
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173"
 app.post('/api/create-post', async (req, res) => {
     const { title, content, image } = req.body;
     const postId = v4();
@@ -27,8 +29,8 @@ app.post('/api/create-post', async (req, res) => {
     }
 
     res.json({ 
-        postUrl: `${process.env.FRONTEND_URL}/post/${postId}`,
-        ogImage: `${process.env.BACKEND_URL}/${postId}.png`
+        postUrl: `${FRONTEND_URL}/post/${postId}`,
+        ogImage: `${BACKEND_URL}/${postId}.png`
      });
 });
 
